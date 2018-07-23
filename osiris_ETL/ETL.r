@@ -3,7 +3,7 @@ library(readxl)
 
 # Import and clean data
 
-datafile <- 'data'
+datafile <- '../_data/'
 raw_data <- read_excel(datafile)
 
 cleaned_data <- raw_data %>%
