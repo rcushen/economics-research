@@ -6,5 +6,5 @@ This script pulls out a selected subset of the Bureau van Dijk Osiris dataset, a
 **User Guide**
 1. Nominate the desired variables in the ```fieldnames.xlsx``` file by entering 'Yes' in the Select? column.
 2. Nominate the desired companies in the ```lookuptable.xslx``` file by entering 'Yes' in the Select? column.
-3. Ensure that the raw datafile is correctly specified in the ETL.R file.
+3. Ensure that the raw datafile is correctly specified in the ```ETL.R``` file.
 4. Run the script. Results will be output as ```selected_data.csv```
