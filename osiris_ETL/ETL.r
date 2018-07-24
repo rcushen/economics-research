@@ -8,32 +8,20 @@ raw_data <- read_excel(datafile)
 
 cleaned_data <- raw_data
 
-# Create a lookup table
+# Import desired banks and varnames
 
-companies <- cleaned_data %>%
-  group_by(`Company name`, `OSIRIS Identification Number`) %>%
-  summarise(count_records=n())
+desired_fields <- read_excel('fieldnames.xlsx') %>%
+  filter(!is.na(`Select?`)) %>%
+  pull(`Field Name`)
 
-write_csv(companies, path='lookuptable.csv')
-
-# Specify desired banks and variables
-
-banks <- c(
-  'AE21860',
-  'AE30958',
-  'AE33331'
-)
-
-vars <- c(
-  'ISIN No',
-  'Company name',
-  'Main exchange'
-)
+desired_banks <- read_excel('lookuptable.xlsx') %>%
+  filter(!is.na(`Select?`)) %>%
+  pull(`OSIRIS Identification Number`)
 
 # Select and output the relevant data
 
 selected_data <- cleaned_data %>%
-  filter(`OSIRIS Identification Number` %in% banks) %>%
-  select(vars)
+  filter(`OSIRIS Identification Number` %in% desired_banks) %>%
+  select(desired_fields)
 
 write_csv(selected_data, 'selected_data.csv')
