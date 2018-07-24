@@ -5,7 +5,6 @@ library(readxl)
 
 datafile <- '../_data/Bank_Financials_Downloaded_22Jul2018.xlsx'
 raw_data <- read_excel(datafile)
-
 cleaned_data <- raw_data
 
 # Import desired banks and varnames
