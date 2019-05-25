@@ -2,17 +2,17 @@ library(readxl)
 
 # Import and clean data
 
-datafile <- '../_data/Bank_Financials_Downloaded_22Jul2018.xlsx'
+datafile <- 'input/Bank_Financials_Downloaded_22Jul2018.xlsx'
 raw_data <- read_excel(datafile)
 cleaned_data <- raw_data
 
 # Import desired banks and varnames
 
-desired_fields <- read_excel('fieldnames.xlsx')
+desired_fields <- read_excel('input/fieldnames.xlsx')
 desired_fields <- desired_fields[!is.na(desired_fields$`Select?`),]
 desired_fields <- desired_fields$`Field Name`
 
-desired_banks <- read_excel('lookuptable.xlsx')
+desired_banks <- read_excel('input/lookuptable.xlsx')
 desired_banks <- desired_banks[!is.na(desired_banks$`Select?`),]
 desired_banks <- desired_banks$`OSIRIS Identification Number`
 
@@ -35,6 +35,4 @@ selected_data <- merge(selected_data, full_grid, all=TRUE)
 
 # Output
 
-write.csv(selected_data, 'selected_data.csv', row.names=FALSE)
-
-
+write.csv(selected_data, 'output/selected_data.csv', row.names=FALSE)
